@@ -16,7 +16,7 @@ class CreateFotoKamarsTable extends Migration
         Schema::create('foto_kamars', function (Blueprint $table) {
             $table->id();
             $table->longText('foto_kamar');
-            $table->bigInteger('boarding_house_id');
+            $table->bigInteger('boardinghouses_id');
             $table->timestamps();
         });
     }

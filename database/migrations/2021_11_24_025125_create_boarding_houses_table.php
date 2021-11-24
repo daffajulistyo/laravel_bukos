@@ -21,7 +21,7 @@ class CreateBoardingHousesTable extends Migration
             $table->float('price');
             $table->float('discount')->nullable();
             $table->bigInteger('years');
-            $table->bigInteger('pengelola_id');
+            // $table->bigInteger('pengelola_id');
             $table->timestamps();
         });
     }

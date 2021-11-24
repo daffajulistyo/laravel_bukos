@@ -22,6 +22,6 @@ class Pengelola extends Model
 
     // public function boardingHouse()
     // {
-    //     return $this->belongsTo(BoardingHouse::class, 'pengelola_id', 'id');
+    //     return $this->hasOne(BoardingHouse::class, 'pengelola_id', 'id');
     // }
 }

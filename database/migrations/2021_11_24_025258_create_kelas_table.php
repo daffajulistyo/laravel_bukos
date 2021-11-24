@@ -17,7 +17,7 @@ class CreateKelasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('banner');
-            $table->bigInteger('boarding_houses');
+            $table->bigInteger('boardinghouses_id');
             $table->timestamps();
         });
     }

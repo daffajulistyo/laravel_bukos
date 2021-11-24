@@ -17,6 +17,8 @@ class CreatePengelolasTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('phone_num');
+            
+            $table->bigInteger('boardinghouses_id');
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@ class CreateFasilitasTable extends Migration
         Schema::create('fasilitas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('boarding_houses');
+            $table->bigInteger('boardinghouses_id');
             $table->timestamps();
         });
     }
