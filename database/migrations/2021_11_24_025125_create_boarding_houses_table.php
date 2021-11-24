@@ -15,6 +15,13 @@ class CreateBoardingHousesTable extends Migration
     {
         Schema::create('boarding_houses', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('location');
+            $table->longText('description');
+            $table->float('price');
+            $table->float('discount')->nullable();
+            $table->bigInteger('years');
+            $table->bigInteger('pengelola_id');
             $table->timestamps();
         });
     }

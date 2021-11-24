@@ -15,6 +15,8 @@ class CreatePengelolasTable extends Migration
     {
         Schema::create('pengelolas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('phone_num');
             $table->timestamps();
         });
     }

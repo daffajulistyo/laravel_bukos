@@ -15,6 +15,9 @@ class CreateKelasTable extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('banner');
+            $table->bigInteger('boarding_houses');
             $table->timestamps();
         });
     }

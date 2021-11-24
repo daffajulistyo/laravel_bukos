@@ -26,6 +26,7 @@ class AddFieldToUsersTable extends Migration
             $table->string('agency')->after('email')->nullable();
             $table->longText('profile_photo')->after('email')->nullable();
             $table->longText('ktp_photo')->after('email')->nullable();
+            //test
         });
     }
 

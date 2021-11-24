@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'users_id',
+    ];
+
+    
+
 }
+
