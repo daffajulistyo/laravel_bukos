@@ -9,6 +9,43 @@ use Illuminate\Http\Request;
 
 class BoardingHouseController extends Controller
 {
+    public function addHouse(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'location' => ['required', 'string', 'max:255'],
+                'description' => ['required', 'string'],
+                'price' => ['required', 'string'],
+                'discount' => ['required', 'string'],
+                'years' => ['required', 'integer'],
+            ]);
+
+            BoardingHouse::create([
+                'name' => $request->name,
+                'location' => $request->location,
+                'description' => $request->description,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'years' => $request->years,
+            ]);
+
+            $kost = BoardingHouse::where('name', $request->name)->first();
+
+            return ResponseFormatter::success(
+                $kost,
+                'Data Kos Berhasil Ditambahkan'
+            );
+            
+        } catch (Exception $error) {
+            return ResponseFormatter::error([
+                'message' => 'Something Went Wrong',
+                'error' => $error,
+            ], 'Imput Data Failed', 500);
+        }
+    }
+
+
     public function all(Request $request)
     {
         $id = $request->input('id');
@@ -20,8 +57,7 @@ class BoardingHouseController extends Controller
         $discount = $request->input('discount');
         $years = $request->input('years');
 
-        if ($id) 
-        {
+        if ($id) {
             $kost = BoardingHouse::with([
                 // 'transactions',
                 'jenis',
@@ -62,27 +98,27 @@ class BoardingHouseController extends Controller
             'peraturans'
         ]);
 
-        if($name){
+        if ($name) {
             $kost->where('name', 'like', '%' . $name . '$');
         }
 
-        if($description){
+        if ($description) {
             $kost->where('description', 'like', '%' . $description . '$');
         }
 
-        if($location){
+        if ($location) {
             $kost->where('location', 'like', '%' . $location . '$');
         }
 
-        if($price){
+        if ($price) {
             $kost->where('price', 'like', '%' . $price . '$');
         }
 
-        if($discount){
+        if ($discount) {
             $kost->where('discount', 'like', '%' . $discount . '$');
         }
 
-        if($years){
+        if ($years) {
             $kost->where('years', 'like', '%' . $years . '$');
         }
 
@@ -90,6 +126,5 @@ class BoardingHouseController extends Controller
             $kost->paginate($limit),
             'Data Kos Berhasil Ditampilkan'
         );
-
     }
 }
