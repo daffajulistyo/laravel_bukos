@@ -3,28 +3,27 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fasilitas;
-use App\Helpers\ResponseFormatter;
+use App\Models\FotoKamar;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseFormatter;
 
-class FasilitasController extends Controller
+class FotoKamarController extends Controller
 {
-    //
     public function all(Request $request)
     {
         $id = $request->input('id');
 
         if ($id) {
-            $perId = Fasilitas::find($id);
+            $perId = FotoKamar::find($id);
             if ($id) {
                 return ResponseFormatter::success(
                     $perId,
-                    'Data Kos Berhasil Ditampilkan'
+                    'Data Foto Kamar Berhasil Ditampilkan'
                 );
             } else {
                 return ResponseFormatter::error(
                     null,
-                    'Data Kos Gagal Ditampilkan',
+                    'Data Foto Kamar Gagal Ditampilkan',
                     404
                 );
             }

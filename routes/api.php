@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\BoardingHouseController;
 use App\Http\Controllers\API\FasilitasController;
+use App\Http\Controllers\API\FotoKamarController;
 use App\Http\Controllers\API\UserController;
 
 /*
@@ -35,3 +36,5 @@ Route::get('transaction', [TransactionController::class, 'all']);
 
 Route::post('kost', [BoardingHouseController::class, 'addHouse']);
 Route::get('fasilitas', [FasilitasController::class, 'all']);
+
+Route::get('fotokamar', [FotoKamarController::class, 'all']);
