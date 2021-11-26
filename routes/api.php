@@ -65,6 +65,7 @@ Route::post('pengelola', [PengelolaController::class, 'addPengelola']);
 Route::get('peraturan', [PeraturanController::class, 'all']);
 Route::post('peraturan', [PeraturanController::class, 'addPeraturan']);
 
+<<<<<<< HEAD
 Route::get('rating', [RatingController::class, 'all']);
 Route::post('rating', [RatingController::class, 'addRating']);
 
@@ -73,3 +74,6 @@ Route::post('transaction', [TransactionController::class, 'addTransaction']);
 
 Route::get('type', [TypeController::class, 'all']);
 Route::post('type', [TypeController::class, 'addType']);
+=======
+Route::get('boardingSeeds', [BoardingHouseController::class, 'all']);
+>>>>>>> afd4a35ffb6fbb9332ee3f1319d7dff41f33952d
