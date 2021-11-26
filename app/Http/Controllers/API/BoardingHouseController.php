@@ -59,7 +59,7 @@ class BoardingHouseController extends Controller
 
         if ($id) {
             $kost = BoardingHouse::with([
-                // 'transactions',
+                'transactions',
                 'jenis',
                 'type',
                 'kelas',
@@ -86,7 +86,7 @@ class BoardingHouseController extends Controller
         }
 
         $kost = BoardingHouse::with([
-            // 'transactions',
+            'transactions',
             'jenis',
             'type',
             'kelas',
