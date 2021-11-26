@@ -17,6 +17,7 @@ class Pengelola extends Model
     protected $fillable = [
         'name',
         'phone_num',
+        'boardinghouses_id',
         
     ];
 
