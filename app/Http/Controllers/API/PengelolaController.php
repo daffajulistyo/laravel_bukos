@@ -15,7 +15,7 @@ class PengelolaController extends Controller
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'phone_num' => ['required', 'string', 'min:10'],
-                'boardinghouses_id' => ['required', 'integer'],
+                'boardinghouses_id' => ['required', 'integer','unique:pengelolas'],
             ]);
 
             Pengelola::create([
@@ -33,8 +33,8 @@ class PengelolaController extends Controller
         } catch (Exception $error) {
             return ResponseFormatter::error([
                 'message' => 'Something Went Wrong',
-                'error' => $error,
-            ], 'Imput Data Failed', 500);
+                'error'   => $error,
+            ],  'Imput Data Failed', 500);
         }
     }
 

@@ -79,10 +79,14 @@ class UserController extends Controller
                 'user' => $user
             ], 'Authenticated',);
         } catch (Exception $error) {
-            return ResponseFormatter::error([
-                'message' => 'Something went wrong',
-                'error' => $error
-            ],  'Authentication Failed', 500);
+            return ResponseFormatter::error(
+                [
+                    'message' => 'Something went wrong',
+                    'error' => $error
+                ],
+                'Authentication Failed',
+                500
+            );
         }
     }
 
@@ -113,7 +117,4 @@ class UserController extends Controller
 
         return ResponseFormatter::success($token, 'Token Revoked');
     }
-
-    
 }
-

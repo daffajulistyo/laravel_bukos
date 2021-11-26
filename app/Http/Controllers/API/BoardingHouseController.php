@@ -68,6 +68,7 @@ class BoardingHouseController extends Controller
                 'pengelola',
                 'fotoKos',
                 'fotoKamars',
+                'fasilitas',
                 'peraturans'
             ])->find($id);
 
@@ -95,6 +96,7 @@ class BoardingHouseController extends Controller
             'pengelola',
             'fotoKos',
             'fotoKamars',
+            'fasilitas',
             'peraturans'
         ]);
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\API\FotoKosController;
 use App\Http\Controllers\API\JenisController;
 use App\Http\Controllers\API\KelasController;
 use App\Http\Controllers\API\PengelolaController;
+use App\Http\Controllers\API\PeraturanController;
 use App\Http\Controllers\API\UserController;
 use App\Models\Jenis;
 
@@ -57,3 +58,6 @@ Route::post('kelas', [KelasController::class, 'addKelas']);
 
 Route::get('pengelola', [PengelolaController::class, 'all']);
 Route::post('pengelola', [PengelolaController::class, 'addPengelola']);
+
+Route::get('peraturan', [PeraturanController::class, 'all']);
+Route::post('peraturan', [PeraturanController::class, 'addPeraturan']);
