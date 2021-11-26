@@ -6,7 +6,11 @@ use App\Http\Controllers\API\BoardingHouseController;
 use App\Http\Controllers\API\FasilitasController;
 use App\Http\Controllers\API\FotoKamarController;
 use App\Http\Controllers\API\FotoKosController;
+use App\Http\Controllers\API\JenisController;
+use App\Http\Controllers\API\KelasController;
+use App\Http\Controllers\API\PengelolaController;
 use App\Http\Controllers\API\UserController;
+use App\Models\Jenis;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,3 +48,12 @@ Route::post('fotokamar', [FotoKamarController::class, 'addFotoKamar']);
 
 Route::get('fotokos', [FotoKosController::class, 'all']);
 Route::post('fotokos', [FotoKosController::class, 'addFotoKos']);
+
+Route::get('jenis', [JenisController::class, 'all']);
+Route::post('jenis', [JenisController::class, 'addJenis']);
+
+Route::get('kelas', [KelasController::class, 'all']);
+Route::post('kelas', [KelasController::class, 'addKelas']);
+
+Route::get('pengelola', [PengelolaController::class, 'all']);
+Route::post('pengelola', [PengelolaController::class, 'addPengelola']);
