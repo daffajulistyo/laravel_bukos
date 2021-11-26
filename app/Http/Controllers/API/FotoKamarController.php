@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fasilitas;
-use App\Helpers\ResponseFormatter;
+use App\Models\FotoKamar;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseFormatter;
 
-class FasilitasController extends Controller
+class FotoKamarController extends Controller
 {
-    public function addFasilitas(Request $request)
+    public function addFotoKamar(Request $request)
     {
         try {
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'foto_kamar' => ['required', 'string', 'max:255'],
                 'boardinghouses_id' => ['required', 'integer'],
             ]);
 
-            Fasilitas::create([
-                'name' => $request->name,
+            FotoKamar::create([
+                'foto_kamar' => $request->foto_kamar,
                 'boardinghouses_id' => $request->boardinghouses_id,
             ]);
 
-            $fasilitas = Fasilitas::where('name', $request->name)->first();
+            $fasilitas = FotoKamar::where('foto_kamar', $request->foto_kamar)->first();
 
             return ResponseFormatter::success(
                 $fasilitas,
@@ -42,24 +42,24 @@ class FasilitasController extends Controller
         $id = $request->input('id');
 
         if ($id) {
-            $perId = Fasilitas::find($id);
+            $perId = FotoKamar::find($id);
             if ($id) {
                 return ResponseFormatter::success(
                     $perId,
-                    'Data Kos Berhasil Ditampilkan'
+                    'Data Foto Kamar Berhasil Ditampilkan'
                 );
             } else {
                 return ResponseFormatter::error(
                     null,
-                    'Data Kos Gagal Ditampilkan',
+                    'Data Foto Kamar Gagal Ditampilkan',
                     404
                 );
             }
         }
 
-        $fasilitas = Fasilitas::all();
+        $fotokamar = FotoKamar::all();
         return ResponseFormatter::success(
-            $fasilitas,
+            $fotokamar,
             'Mantap'
         );
     }

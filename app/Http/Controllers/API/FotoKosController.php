@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Fasilitas;
-use App\Helpers\ResponseFormatter;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseFormatter;
+use App\Models\FotoKos;
 
-class FasilitasController extends Controller
+class FotoKosController extends Controller
 {
-    public function addFasilitas(Request $request)
+    public function addFotoKos(Request $request)
     {
         try {
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'foto_kos' => ['required', 'string', 'max:255'],
                 'boardinghouses_id' => ['required', 'integer'],
             ]);
 
-            Fasilitas::create([
-                'name' => $request->name,
+            FotoKos::create([
+                'foto_kos' => $request->foto_kos,
                 'boardinghouses_id' => $request->boardinghouses_id,
             ]);
 
-            $fasilitas = Fasilitas::where('name', $request->name)->first();
+            $fotokos = FotoKos::where('foto_kos', $request->foto_kos)->first();
 
             return ResponseFormatter::success(
-                $fasilitas,
+                $fotokos,
                 'Data Berhasil Ditambahkan'
             );
             
@@ -42,24 +42,24 @@ class FasilitasController extends Controller
         $id = $request->input('id');
 
         if ($id) {
-            $perId = Fasilitas::find($id);
+            $perId = FotoKos::find($id);
             if ($id) {
                 return ResponseFormatter::success(
                     $perId,
-                    'Data Kos Berhasil Ditampilkan'
+                    'Data Foto Kos Berhasil Ditampilkan'
                 );
             } else {
                 return ResponseFormatter::error(
                     null,
-                    'Data Kos Gagal Ditampilkan',
+                    'Data Foto Kos Gagal Ditampilkan',
                     404
                 );
             }
         }
 
-        $fasilitas = Fasilitas::all();
+        $fotokos = FotoKos::all();
         return ResponseFormatter::success(
-            $fasilitas,
+            $fotokos,
             'Mantap'
         );
     }
