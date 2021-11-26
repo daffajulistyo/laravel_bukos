@@ -61,3 +61,5 @@ Route::post('pengelola', [PengelolaController::class, 'addPengelola']);
 
 Route::get('peraturan', [PeraturanController::class, 'all']);
 Route::post('peraturan', [PeraturanController::class, 'addPeraturan']);
+
+Route::get('boardingSeeds', [BoardingHouseController::class, 'all']);
