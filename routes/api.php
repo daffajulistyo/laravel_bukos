@@ -10,6 +10,9 @@ use App\Http\Controllers\API\JenisController;
 use App\Http\Controllers\API\KelasController;
 use App\Http\Controllers\API\PengelolaController;
 use App\Http\Controllers\API\PeraturanController;
+use App\Http\Controllers\API\RatingController;
+use App\Http\Controllers\API\TransactionController;
+use App\Http\Controllers\API\TypeController;
 use App\Http\Controllers\API\UserController;
 use App\Models\Jenis;
 
@@ -61,3 +64,12 @@ Route::post('pengelola', [PengelolaController::class, 'addPengelola']);
 
 Route::get('peraturan', [PeraturanController::class, 'all']);
 Route::post('peraturan', [PeraturanController::class, 'addPeraturan']);
+
+Route::get('rating', [RatingController::class, 'all']);
+Route::post('rating', [RatingController::class, 'addRating']);
+
+Route::get('transaction', [TransactionController::class, 'all']);
+Route::post('transaction', [TransactionController::class, 'addTransaction']);
+
+Route::get('type', [TypeController::class, 'all']);
+Route::post('type', [TypeController::class, 'addType']);
