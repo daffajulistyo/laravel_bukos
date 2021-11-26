@@ -9,6 +9,34 @@ use App\Helpers\ResponseFormatter;
 
 class FotoKamarController extends Controller
 {
+    public function addFotoKamar(Request $request)
+    {
+        try {
+            $request->validate([
+                'foto_kamar' => ['required', 'string', 'max:255'],
+                'boardinghouses_id' => ['required', 'integer'],
+            ]);
+
+            FotoKamar::create([
+                'foto_kamar' => $request->foto_kamar,
+                'boardinghouses_id' => $request->boardinghouses_id,
+            ]);
+
+            $fasilitas = FotoKamar::where('foto_kamar', $request->foto_kamar)->first();
+
+            return ResponseFormatter::success(
+                $fasilitas,
+                'Data Berhasil Ditambahkan'
+            );
+            
+        } catch (Exception $error) {
+            return ResponseFormatter::error([
+                'message' => 'Something Went Wrong',
+                'error' => $error,
+            ], 'Imput Data Failed', 500);
+        }
+    }
+
     public function all(Request $request)
     {
         $id = $request->input('id');
@@ -29,9 +57,9 @@ class FotoKamarController extends Controller
             }
         }
 
-        $fasilitas = Fasilitas::all();
+        $fotokamar = FotoKamar::all();
         return ResponseFormatter::success(
-            $fasilitas,
+            $fotokamar,
             'Mantap'
         );
     }

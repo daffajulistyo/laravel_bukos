@@ -9,7 +9,34 @@ use Illuminate\Http\Request;
 
 class FasilitasController extends Controller
 {
-    //
+    public function addFasilitas(Request $request)
+    {
+        try {
+            $request->validate([
+                'name' => ['required', 'string', 'max:255'],
+                'boardinghouses_id' => ['required', 'integer'],
+            ]);
+
+            Fasilitas::create([
+                'name' => $request->name,
+                'boardinghouses_id' => $request->boardinghouses_id,
+            ]);
+
+            $fasilitas = Fasilitas::where('name', $request->name)->first();
+
+            return ResponseFormatter::success(
+                $fasilitas,
+                'Data Berhasil Ditambahkan'
+            );
+            
+        } catch (Exception $error) {
+            return ResponseFormatter::error([
+                'message' => 'Something Went Wrong',
+                'error' => $error,
+            ], 'Imput Data Failed', 500);
+        }
+    }
+
     public function all(Request $request)
     {
         $id = $request->input('id');
