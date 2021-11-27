@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use Illuminate\Http\Request;
+use App\Helpers\ResponseFormatter;
 
 class TypeController extends Controller
 {
