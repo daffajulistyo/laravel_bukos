@@ -9,32 +9,32 @@ use App\Helpers\ResponseFormatter;
 
 class TransactionController extends Controller
 {
-    public function addTransaction(Request $request)
-    {
-        try {
-            $request->validate([
-                'users_id' => ['required', 'string', 'max:255'],
-                'boardinghouses_id' => ['required', 'integer'],
-            ]);
+    // public function addTransaction(Request $request)
+    // {
+    //     try {
+    //         $request->validate([
+    //             'users_id' => ['required', 'string', 'max:255'],
+    //             'boardinghouses_id' => ['required', 'integer'],
+    //         ]);
 
-            Transaction::create([
-                'users_id' => $request->users_id,
-                'boardinghouses_id' => $request->boardinghouses_id,
-            ]);
+    //         Transaction::create([
+    //             'users_id' => $request->users_id,
+    //             'boardinghouses_id' => $request->boardinghouses_id,
+    //         ]);
 
-            $jenis = Transaction::where('users_id', $request->users_id)->first();
+    //         $jenis = Transaction::where('users_id', $request->users_id)->first();
 
-            return ResponseFormatter::success(
-                $jenis,
-                'Data Berhasil Ditambahkan'
-            );
-        } catch (Exception $error) {
-            return ResponseFormatter::error([
-                'message' => 'Something Went Wrong',
-                'error' => $error,
-            ], 'Imput Data Failed', 500);
-        }
-    }
+    //         return ResponseFormatter::success(
+    //             $jenis,
+    //             'Data Berhasil Ditambahkan'
+    //         );
+    //     } catch (Exception $error) {
+    //         return ResponseFormatter::error([
+    //             'message' => 'Something Went Wrong',
+    //             'error' => $error,
+    //         ], 'Imput Data Failed', 500);
+    //     }
+    // }
 
     public function all(Request $request)
     {
