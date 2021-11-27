@@ -13,12 +13,12 @@ class BoardingHouseController extends Controller
     {
         try {
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'name' => ['required', 'string', 'max:255', 'unique:boarding_houses'],
                 'location' => ['required', 'string', 'max:255'],
-                'description' => ['required', 'string'],
+                'description' => ['required', 'string', 'max:255'],
                 'price' => ['required', 'string'],
                 'discount' => ['required', 'string'],
-                'years' => ['required', 'integer'],
+                'years' => ['required', 'string'],
             ]);
 
             BoardingHouse::create([
@@ -34,16 +34,16 @@ class BoardingHouseController extends Controller
 
             return ResponseFormatter::success(
                 $kost,
-                'Data Kos Berhasil Ditambahkan'
+                'Data Kos Berhasil Ditambahkan Y'
             );
-            
         } catch (Exception $error) {
             return ResponseFormatter::error([
                 'message' => 'Something Went Wrong',
                 'error' => $error,
-            ], 'Imput Data Failed', 500);
+            ], 'Authentication Failed', 500);
         }
     }
+
 
 
     public function all(Request $request)

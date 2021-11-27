@@ -42,7 +42,7 @@ class RatingController extends Controller
 
         if ($id) {
             $perId = Rating::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Rating Berhasil Ditampilkan'

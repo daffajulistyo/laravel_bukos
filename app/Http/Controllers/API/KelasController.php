@@ -44,7 +44,7 @@ class KelasController extends Controller
 
         if ($id) {
             $perId = Kelas::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Kelas Berhasil Ditampilkan'

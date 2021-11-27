@@ -38,14 +38,15 @@ class TypeController extends Controller
 
     public function all(Request $request)
     {
+
         $id = $request->input('id');
 
         if ($id) {
             $perId = Type::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
-                    'Data Type Berhasil Ditampilkan'
+                    'Data Type Berhasil Ditampilkan Y'
                 );
             } else {
                 return ResponseFormatter::error(
@@ -61,5 +62,7 @@ class TypeController extends Controller
             $Type,
             'Mantap'
         );
+
+           
     }
 }

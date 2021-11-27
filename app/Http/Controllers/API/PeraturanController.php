@@ -42,7 +42,7 @@ class PeraturanController extends Controller
 
         if ($id) {
             $perId = Peraturan::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Peraturan Berhasil Ditampilkan'

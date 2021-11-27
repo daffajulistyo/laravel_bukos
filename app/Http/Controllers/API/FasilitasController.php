@@ -43,7 +43,7 @@ class FasilitasController extends Controller
 
         if ($id) {
             $perId = Fasilitas::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Kos Berhasil Ditampilkan'

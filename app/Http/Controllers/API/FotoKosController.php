@@ -43,7 +43,7 @@ class FotoKosController extends Controller
 
         if ($id) {
             $perId = FotoKos::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Foto Kos Berhasil Ditampilkan'

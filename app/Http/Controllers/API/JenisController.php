@@ -42,7 +42,7 @@ class JenisController extends Controller
 
         if ($id) {
             $perId = Jenis::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Jenis Berhasil Ditampilkan'

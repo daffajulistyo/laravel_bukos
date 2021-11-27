@@ -43,7 +43,7 @@ class FotoKamarController extends Controller
 
         if ($id) {
             $perId = FotoKamar::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Foto Kamar Berhasil Ditampilkan'

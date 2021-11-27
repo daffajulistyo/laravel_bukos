@@ -44,7 +44,7 @@ class PengelolaController extends Controller
 
         if ($id) {
             $perId = Pengelola::find($id);
-            if ($id) {
+            if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
                     'Data Pengelola Berhasil Ditampilkan'
