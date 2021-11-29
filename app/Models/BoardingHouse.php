@@ -36,12 +36,12 @@ class BoardingHouse extends Model
 
     public function type()
     {
-        return $this->hasMany(Type::class, 'boardinghouses_id' , 'id');
+        return $this->hasOne(Type::class, 'boardinghouses_id' , 'id');
     }
 
     public function kelas()
     {
-        return $this->hasMany(Kelas::class, 'boardinghouses_id' , 'id');
+        return $this->hasOne(Kelas::class, 'boardinghouses_id' , 'id');
     }
 
     public function chats()
