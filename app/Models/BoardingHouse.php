@@ -31,7 +31,7 @@ class BoardingHouse extends Model
 
     public function jenis()
     {
-        return $this->hasMany(Jenis::class, 'boardinghouses_id' , 'id');
+        return $this->hasOne(Jenis::class, 'boardinghouses_id' , 'id');
     }
 
     public function type()
