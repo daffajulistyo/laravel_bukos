@@ -9,60 +9,48 @@ use App\Helpers\ResponseFormatter;
 
 class TransactionController extends Controller
 {
-    // public function addTransaction(Request $request)
-    // {
-    //     try {
-    //         $request->validate([
-    //             'users_id' => ['required', 'string', 'max:255'],
-    //             'boardinghouses_id' => ['required', 'integer'],
-    //         ]);
-
-    //         Transaction::create([
-    //             'users_id' => $request->users_id,
-    //             'boardinghouses_id' => $request->boardinghouses_id,
-    //         ]);
-
-    //         $jenis = Transaction::where('users_id', $request->users_id)->first();
-
-    //         return ResponseFormatter::success(
-    //             $jenis,
-    //             'Data Berhasil Ditambahkan'
-    //         );
-    //     } catch (Exception $error) {
-    //         return ResponseFormatter::error([
-    //             'message' => 'Something Went Wrong',
-    //             'error' => $error,
-    //         ], 'Imput Data Failed', 500);
-    //     }
-    // }
+    
 
     public function all(Request $request)
     {
 
         $id = $request->input('id');
+        $limit = $request->input('limit');
+        $status = $request->input('status');
 
-        if ($id) {
-            $perId = Transaction::find($id);
-            if ($perId) {
+        if($id)
+        {
+            $transaction = Transaction::with(['user'])->find($id);
+
+            if($transaction)
+            {
                 return ResponseFormatter::success(
-                    $perId,
-                    'Data Type Berhasil Ditampilkan Y'
+                    $transaction,
+                    'Data Berhasil'
                 );
-            } else {
+            }
+            else
+            {
                 return ResponseFormatter::error(
                     null,
-                    'Data Type Gagal Ditampilkan',
+                    'Data Error Lagi Yaa',
                     404
                 );
             }
         }
 
-        $tr = Transaction::all();
+        $transaction = Transaction::with('user')->where('users_id',Auth::user()->id);
+        
+        if($status)
+        {
+            $transaction->where('status',$status);
+        }
+
         return ResponseFormatter::success(
-            $tr,
-            'Mantap'
+            $transaction->paginate($limit),'Data BErhasil diambil'
         );
 
-           
+
+
     }
 }

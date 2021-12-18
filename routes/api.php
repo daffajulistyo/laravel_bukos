@@ -14,7 +14,7 @@ use App\Http\Controllers\API\RatingController;
 use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\API\TypeController;
 use App\Http\Controllers\API\UserController;
-use App\Models\Jenis;
+use App\Http\Controllers\API\IklanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,3 +75,6 @@ Route::get('type', [TypeController::class, 'all']);
 Route::post('type', [TypeController::class, 'addType']);
 
 Route::get('boardingSeed', [BoardingHouseController::class, 'all']);
+
+Route::get('iklan', [IklanController::class, 'all']);
+Route::post('iklan', [IklanController::class, 'addIklan']);

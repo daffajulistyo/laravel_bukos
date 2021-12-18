@@ -3,66 +3,64 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Models\Type;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
+use App\Models\Iklan;
 
-class TypeController extends Controller
+class IklanController extends Controller
 {
-    public function addType(Request $request)
+    public function addIklan(Request $request)
     {
         try {
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'boardinghouses_id' => ['required', 'integer'],
+                'url_iklan' => ['required', 'string'],
             ]);
 
-            Type::create([
+            Iklan::create([
                 'name' => $request->name,
-                'boardinghouses_id' => $request->boardinghouses_id,
+                'url_iklan' => $request->url_iklan,
             ]);
 
-            $Type = Type::where('name', $request->name)->first();
+            $iklan = Iklan::where('name', $request->name)->first();
 
             return ResponseFormatter::success(
-                $Type,
-                'Data Berhasil Ditambahkan'
+                $iklan,
+                'Data Iklan Berhasil Ditambahkan'
             );
+            
         } catch (Exception $error) {
             return ResponseFormatter::error([
                 'message' => 'Something Went Wrong',
                 'error' => $error,
-            ], 'Imput Data Failed', 500);
+            ], 'Imput Iklan Failed', 500);
         }
     }
 
     public function all(Request $request)
     {
-
         $id = $request->input('id');
 
         if ($id) {
-            $perId = Type::find($id);
+            $perId = Iklan::find($id);
             if ($perId) {
                 return ResponseFormatter::success(
                     $perId,
-                    'Data Type Kos Berhasil ditampilkan'
+                    'Data Iklan Berhasil Ditampilkan'
                 );
             } else {
                 return ResponseFormatter::error(
                     null,
-                    'Data Type Kos Gagal ditampilkan',
+                    'Data Iklan Gagal Ditampilkan',
                     404
                 );
             }
         }
 
-        $Type = Type::all();
+        $iklan = Iklan::all();
         return ResponseFormatter::success(
-            $Type,
+            $iklan,
             'Mantap'
         );
-
-           
     }
 }
