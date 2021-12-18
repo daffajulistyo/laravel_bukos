@@ -20,8 +20,8 @@ class Jenis extends Model
         
     ];
 
-    public function boardingHouses()
-    {
-        return $this->belongsTo(BoardingHouse::class, 'boardinghouses_id','id');
-    }
+    // public function boardingHouses()
+    // {
+    //     return $this->belongsTo(BoardingHouse::class, 'boardinghouses_id','id');
+    // }
 }
