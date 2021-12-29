@@ -24,6 +24,7 @@ class CreateBoardingHousesTable extends Migration
             $table->string('latitude');
             $table->string('longitude');
             // $table->bigInteger('pengelola_id');
+            // $table->bigInteger('pengelola_id');
             $table->timestamps();
         });
     }
