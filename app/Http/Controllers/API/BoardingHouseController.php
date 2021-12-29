@@ -19,6 +19,8 @@ class BoardingHouseController extends Controller
                 'price' => ['required', 'string'],
                 'discount' => ['required', 'string'],
                 'years' => ['required', 'string'],
+                'latitude' => ['required', 'string'],
+                'longitude' => ['required', 'string'],
             ]);
 
             BoardingHouse::create([
@@ -28,6 +30,8 @@ class BoardingHouseController extends Controller
                 'price' => $request->price,
                 'discount' => $request->discount,
                 'years' => $request->years,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
             ]);
 
             $kost = BoardingHouse::where('name', $request->name)->first();
@@ -56,6 +60,8 @@ class BoardingHouseController extends Controller
         $price = $request->input('price');
         $discount = $request->input('discount');
         $years = $request->input('years');
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
 
         if ($id) {
             $kost = BoardingHouse::with([
@@ -122,6 +128,14 @@ class BoardingHouseController extends Controller
 
         if ($years) {
             $kost->where('years', 'like', '%' . $years . '$');
+        }
+
+        if ($latitude) {
+            $kost->where('latitude', 'like', '%' . $latitude . '$');
+        }
+
+        if ($longitude) {
+            $kost->where('longitude', 'like', '%' . $longitude . '$');
         }
 
         return ResponseFormatter::success(

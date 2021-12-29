@@ -22,6 +22,8 @@ class BoardingHouse extends Model
         'discount',
         'pengelola_id',
         'years',
+        'latitude',
+        'longitude',
     ];
 
     public function transactions()
