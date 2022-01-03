@@ -16,7 +16,8 @@ class AddFieldToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('phone_num')->after('email')->nullable();
             $table->string('gender')->after('email')->nullable();
-            $table->string('user_level')->after('email')->enum("USER", "ADMIN");
+            // $table->string('user_level')->after('email')->enum("USER", "ADMIN");
+            $table->enum('user_level', ['USER', 'ADMIN'])->after('email')->nullable();
             $table->string('born_date')->after('email')->nullable();
             $table->longText('address')->after('email')->nullable();
             $table->string('status')->after('email')->nullable();
