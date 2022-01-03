@@ -102,6 +102,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:255', 'unique:users'],
             'phone_num' => ['required', 'string', 'min:11'],
+            'user_level' => ['required', 'string']
         ]);
 
         $data = $request->all();
@@ -111,7 +112,7 @@ class UserController extends Controller
 
         return ResponseFormatter::success($user, 'Profile updated');
     }
-    
+
     public function logout(Request $request)
     {
         $token =  $request->user()->currentAccessToken()->delete();
