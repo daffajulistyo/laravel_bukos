@@ -26,7 +26,7 @@ class TransactionController extends Controller
             {
                 return ResponseFormatter::success(
                     $transaction,
-                    'Data Berhasil'
+                    'Data Berhasil Diambil'
                 );
             }
             else
