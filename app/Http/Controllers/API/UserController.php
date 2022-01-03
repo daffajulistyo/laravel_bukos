@@ -20,6 +20,7 @@ class UserController extends Controller
                 'email' => ['required', 'email', 'string', 'max:255', 'unique:users'],
                 'phone_num' => ['required', 'string', 'min:11'],
                 'password' => ['required', 'string', 'min:6'],
+                'user_level' => ['required', 'string', 'min:4']
             ]);
 
             User::create([
@@ -102,7 +103,6 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'string', 'max:255', 'unique:users'],
             'phone_num' => ['required', 'string', 'min:11'],
-            'user_level' => ['required', 'string', 'min:4']
         ]);
 
         $data = $request->all();
