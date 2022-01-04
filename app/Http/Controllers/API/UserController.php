@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         try {
             $request->validate([
+                'uid' => ['required', 'string'],
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'email', 'string', 'max:255', 'unique:users'],
                 'phone_num' => ['required', 'string', 'min:11'],
@@ -24,6 +25,7 @@ class UserController extends Controller
             ]);
 
             User::create([
+                'uid' => $request->uid,
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone_num' => $request->phone_num,
